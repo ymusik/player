@@ -60,13 +60,13 @@
         });
 
         let repro = document.querySelector(".plyr");
-        repro.classList.remove("plyr--video");
-        repro.classList.add("plyr--audio");
+        repro.classList.remove('plyr--video', 'plyr--youtube', 'plyr--fullscreen-enabled', 'plyr__poster-enabled');
+        repro.classList.add("plyr--audio", "plyr--html5", "plyr--paused", "plyr--stopped");
 
         player.on("ready", (target) => {
             const player = target.detail.plyr;
             player.embed.loadVideoById(videoId);
-        
+
         });
     </script>
 </body>
