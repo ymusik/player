@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.9/plyr.css"
+        integrity="sha512-FmbvMlx10PqtlmoygpCwfczfivTgluO7jnUJSjXyDZctbR8p4vmGaVtftEBNdMWlE50gHGHrWynUUrrKiWdWxg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .plyr__video-wrapper.plyr__video-embed {
+            position: absolute;
+            left: -999999px !important;
+        }
+
+        .plyr__controls {
+            width: 100%;
+        }
+
+        .plyr__controls {
+            position: inherit !important;
+            padding: 5px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.9/plyr.min.js"
+        integrity="sha512-Wt3CCBrK4mMw9PUEzDpKPMN7cLCq7/Uu7vxRtG+EQv+DO9Yae/LKSQTfziDj51y1yeSqqLt142lNyJtBXG/gSw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+
+
+
+        const player = new Plyr('#player', {
+            controls: ['play', 'duration', 'progress', 'current-time', 'mute', 'volume'],
+            hideControls: false,
+            tooltips: {
+                controls: false,
+                seek: false
+            },
+            invertTime: false
+        });
+
+        let repro = document.querySelector('.plyr');
+        repro.classList.remove('plyr--video');
+        repro.classList.add('plyr--audio');
+
+        player.on('ready', target => {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const videoId = urlParams.get('videoId');
+            const player = target.detail.plyr;
+            player.embed.loadVideoById(videoId);
+            player.play();
+        });
+
+
+
+    </script>
+</body>
+
+</html>
