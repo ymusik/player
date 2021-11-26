@@ -10,10 +10,10 @@
         integrity="sha512-FmbvMlx10PqtlmoygpCwfczfivTgluO7jnUJSjXyDZctbR8p4vmGaVtftEBNdMWlE50gHGHrWynUUrrKiWdWxg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        .plyr__video-wrapper.plyr__video-embed {
+        /* .plyr__video-wrapper.plyr__video-embed {
             position: absolute;
             left: -999999px !important;
-        }
+        } */
 
         .plyr__controls {
             width: 100%;
@@ -66,7 +66,7 @@
         player.on("ready", (target) => {
             const player = target.detail.plyr;
             player.embed.loadVideoById(videoId);
-            player.embed.play();
+        
         });
     </script>
 </body>
